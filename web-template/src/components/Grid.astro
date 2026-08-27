@@ -1,12 +1,12 @@
 ---
 interface Props {
-	variant?: 'offset' | 'small';
+	variant?: 'offset' | 'large' | 'small';
 }
 
 const { variant } = Astro.props;
 ---
 
-<ul class:list={['grid', { offset: variant === 'offset', small: variant === 'small' }]}>
+<ul class:list={['grid', { offset: variant === 'offset', large: variant === 'large', small: variant === 'small' }]}>
 	<slot />
 </ul>
 
@@ -49,6 +49,21 @@ const { variant } = Astro.props;
 		.grid.offset > :global(:last-child:nth-child(odd)) {
 			grid-column: 2 / 3;
 			transform: none;
+		}
+		
+
+		.grid.large {
+			padding-bottom: 0rem;
+		}
+
+		/* Shift first item in each row vertically to create staggered effect. */
+		.grid.large > :global(:nth-child(odd)) {
+			transform: translateY(0rem);
+		}
+
+		/* If last row contains only one item, display it in the second column. */
+		.grid.large > :global(:last-child:nth-child(odd)) {
+			grid-column: 2 / 3;
 		}
 
 		.grid.small {

@@ -1,24 +1,33 @@
 ---
-title: Bloom Box
+title: Connectivité IoT avec LoRaWAN
 draft : false
-publishDate: 2019-12-01 00:00:00
+publishDate: 2026-07-03 00:00:00
 img: /assets/stock-2.jpg
-img_alt: A bright pink sheet of paper used to wrap flowers curves in front of rich blue background
+img_alt: carte système embarqué avec antène LoRa
 description: |
-  We paired with a cutting-edge music API and a team of horticulturalists
-  to build AI-generated playlists that maximize houseplant health.
+  Nous avons créer une mini station météo communiquant avec le protocole radio LoRa (Long Range).
 tags:
-  - Dev
-  - Branding
-  - Backend
+  - Embarqué
+  - Développement
+  - C/C++
+  - FreeRTOS
+  - LoRa/LoRaWAN
+
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere commodo venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam non ligula vel metus efficitur hendrerit. In hac habitasse platea dictumst. Praesent et mauris ut mi dapibus semper. Curabitur tortor justo, efficitur sit amet pretium cursus, porta eget odio. Cras ac venenatis dolor. Donec laoreet posuere malesuada. Curabitur nec mi tempor, placerat leo sit amet, tincidunt est. Quisque pellentesque venenatis magna, eget tristique nibh pulvinar in. Vestibulum vitae volutpat arcu. Aenean ut malesuada odio, sit amet pellentesque odio. Suspendisse nunc elit, blandit nec hendrerit non, aliquet at magna. Donec id leo ut nulla sagittis sodales.
+Le but de ce projet étais d'apprendre le fonctionnement et l'utilisation du protocole _LoRa/LoRaWAN_ avec un cas d'utilisation simple : une station météo.
 
-Integer vitae nibh elit. Suspendisse eget urna eu neque bibendum pharetra. Sed interdum lectus sem, in pulvinar magna dignissim vel. Quisque maximus at urna nec laoreet. Suspendisse potenti. Vestibulum rhoncus sem ut mi pellentesque, in vestibulum erat blandit. Aliquam sodales dui ac maximus consectetur. Duis quis est vehicula, imperdiet nisl nec, fermentum erat. Duis tortor diam, pharetra eu euismod in, vehicula non eros. Curabitur facilisis dui at erat ultrices gravida. In at nunc ultricies, pulvinar mi vel, sagittis mauris. Praesent pharetra posuere purus ac imperdiet. Nulla facilisi.
+La vue globale du système ce présente ainsi : la station récupère les données de température et d'humidité, elle les transmet par radio selon le protocole _LoRa/LoRaWAN_ à notre serveur de donnée. Les donnée sont ensuite mise en forme pour l'utilisateur dans un _dash board_. 
 
-Sed pulvinar porttitor mi in ultricies. Etiam non dolor gravida eros pulvinar pellentesque et dictum ex. Proin eu ornare ligula, sed condimentum dui. Vivamus tincidunt tellus mi, sed semper ipsum pharetra a. Suspendisse sollicitudin at sapien nec volutpat. Etiam justo urna, laoreet ac lacus sed, ultricies facilisis dolor. Integer posuere, metus vel viverra gravida, risus elit ornare magna, id feugiat erat risus ullamcorper libero. Proin vitae diam auctor, laoreet lorem vitae, varius tellus.
+**LoRa vs LoRaWAN**
 
-Mauris sed eros in ex maximus volutpat. Suspendisse potenti. Donec lacinia justo consectetur sagittis tempor. Proin ullamcorper nisi vitae auctor rhoncus. Sed tristique aliquam augue. Pellentesque vitae fringilla ligula. Nulla arcu elit, efficitur eu nunc malesuada, eleifend tincidunt orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer mattis orci in bibendum ultricies. Quisque a dui erat. Phasellus et vulputate ipsum. Proin metus ex, lobortis nec ornare eget, bibendum ut sapien. Aliquam in dolor lobortis, aliquam tellus a, congue augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+_LoRa_ est le protocole radio utilisé par le composant éléctronique de la carte. Il permet de transmètre des messages à d'autres systèmes embarqués capable de les recevoirs. l'avantage de ce protocole est qu'il utilise très peu d'energie et qu'il permet d'envoyer des messages sur une disante d'environ 15km ce qui en fait un des meilleurs protocoles de communication sans fils pour les systèmes embarqués de terrain.
 
-Aenean pretium purus augue, ut bibendum erat convallis quis. Cras condimentum quis velit ac mollis. Suspendisse non purus fringilla, venenatis nisl porta, finibus odio. Curabitur aliquet metus faucibus libero interdum euismod. Morbi sed magna nisl. Morbi odio nibh, facilisis vel sapien eu, tempus tincidunt erat. Nullam erat velit, sagittis at purus quis, tristique scelerisque tortor. Pellentesque lacinia tortor id est aliquam viverra. Vestibulum et diam ac ipsum mollis fringilla.
+_LoRaWAN_ est la technologie utilisée pour faire passer la communication des systèmes LoRa sur internet. Ceci fonctionne grâce à des modules de passerelles connectée à des serveurs officiels ou communautaires.
+
+**Approche de développement**
+
+Le language de code _C++_ permet une approche orientée objet du programme. Chaque composant éléctronique est alors représenté par une classe _C++_ qui est ensuite insenciée dans le programme principale. 
+Chacun de ces composant doit travailler simultanéement, c'est pourquoi nous avons utiliser le système d'exploitation _FreeRTOS_ qui nous a permis d'associer chaque action des composant à une tâche. Une fois le système en marche, _FreeRTOS_ s'occupe lui même d'agencer les tâches pour qu'elle fonctionnent en parallèle. 
+
+Ce projet à été réalisé en binome avec l'aide du reste de la classe et du professeur.

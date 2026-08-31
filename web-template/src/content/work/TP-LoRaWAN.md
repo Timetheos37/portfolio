@@ -2,7 +2,7 @@
 title: Connectivité IoT avec LoRaWAN
 draft : false
 publishDate: 2026-07-03 00:00:00
-img: /assets/stock-2.jpg
+img: /assets/img-TP-LoRa.JPEG
 img_alt: carte système embarqué avec antène LoRa
 description: |
   Nous avons créer une mini station météo communiquant avec le protocole radio LoRa (Long Range).

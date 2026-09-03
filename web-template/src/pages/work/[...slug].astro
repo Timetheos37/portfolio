@@ -6,6 +6,7 @@ import Portrait from '../../components/Portrait.astro';
 import Icon from '../../components/Icon.astro';
 import Pill from '../../components/Pill.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Carousel from '../../components/Carousel.astro';
 
 interface Props {
 	entry: CollectionEntry<'work'>;
@@ -24,6 +25,11 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const galleryImages = entry.data.gallery || [];
+const allImages = [
+    { src: entry.data.img, alt: entry.data.img_alt },
+    ...galleryImages
+];
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
@@ -44,7 +50,7 @@ const { Content } = await render(entry);
 			</header>
 			<main class="wrapper">
 				<div class="stack gap-10 content">
-					{entry.data.img && <img src={entry.data.img} alt={entry.data.img_alt || ''} />}
+					<Carousel images={allImages} />
 					<div class="content">
 						<Content />
 					</div>

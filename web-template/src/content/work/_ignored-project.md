@@ -4,6 +4,11 @@ draft: true
 publishDate: 2026-12-01 00:00:00
 img: /assets/stock-2.jpg
 img_alt: A bright pink sheet of paper used to wrap flowers curves in front of rich blue background
+gallery:
+  - src: /assets/stock-1.jpg
+    alt: Une autre vue du projet
+  - src: /assets/stock-2.jpg
+    alt: Zoom sur un détail
 description: |
   should be ignored
 tags:

@@ -4,6 +4,10 @@ draft : false
 publishDate: 2026-07-03 00:00:00
 img: /assets/img-TP-LoRa.JPEG
 img_alt: carte système embarqué avec antène LoRa
+gallery:
+  - src: /assets/img-TP-LoRa-2.JPEG
+    alt: vue température dans le dashboard
+ 
 description: |
   Nous avons créer une mini station météo communiquant avec le protocole radio LoRa (Long Range).
 tags:

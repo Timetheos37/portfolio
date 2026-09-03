@@ -4,6 +4,11 @@ draft : false
 publishDate: 2026-02-08 00:00:00
 img: /assets/stock-1.jpg
 img_alt: Iridescent ripples of a bright blue and pink liquid
+gallery:
+  - src: /assets/stock-1.jpg
+    alt: Une autre vue du projet
+  - src: /assets/stock-2.jpg
+    alt: Zoom sur un détail
 description: |
   Projet de semestre : Conception architechture réseau complète selon le cahier des charges d'une entreprise fictive GreenSoft.
 tags:

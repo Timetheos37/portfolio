@@ -1,69 +1,57 @@
 ---
+import { Carousel } from 'webcoreui/astro';
+
 interface Props {
-	images: { src: string; alt?: string }[];
+    images: { src: string; alt?: string }[];
 }
 
 const { images } = Astro.props;
 ---
+
 <div class="carousel-container">
-	<ul class="carousel-track">
-		{images.map((image) => (
-			<li class="carousel-slide">
-				<img src={image.src} alt={image.alt || ''} loading="lazy" />
-			</li>
-		))}
-	</ul>
+    <!-- On ajoute la progress bar et le texte de statut -->
+    <Carousel 
+        items={images.length} 
+        progress={true} 
+    >
+        {images.map((image) => (
+            <li class="carousel-slide">
+                <img 
+                    src={image.src} 
+                    alt={image.alt || ''} 
+                    loading="lazy" 
+                    class="carousel-image"
+                />
+            </li>
+        ))}
+    </Carousel>
 </div>
 
 <style>
-	.carousel-container {
-		width: 100%;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-sm);
-		border: 1px solid var(--gray-800);
-		overflow: hidden;  /* Garde les bords arrondis */
-	}
+    .carousel-container {
+        width: 100%;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--gray-800);
+        border-radius: 1.5rem;
+        overflow: hidden; 
+    }
 
-	.carousel-track {
-		display: flex;
-		gap: 0;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		overflow-x: auto;
-		scroll-snap-type: x mandatory; /* Magnétisme lors du défilement */
-		scroll-behavior: smooth;
-		-webkit-overflow-scrolling: touch;
-	}
+    /* On s'assure que chaque slide prend exactement 100% de la place disponible */
+    .carousel-slide {
+        flex: 0 0 100%; /* Force 1 image à la fois */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style-type: none; /* Retire le petit point noir par défaut des listes <li> */
+        margin: 0;
+        padding: 0;
+    }
 
-	/* Style de la barre de défilement (sur PC) */
-	.carousel-track::-webkit-scrollbar {
-		height: 10px;
-	}
-	.carousel-track::-webkit-scrollbar-track {
-		background: transparent;
-	}
-	.carousel-track::-webkit-scrollbar-thumb {
-		background: transparent;
-		border-radius: 10px;
-	}
-
-	.carousel-slide {
-		flex: 0 0 100%; /* Chaque image prend 100% de la largeur */
-		scroll-snap-align: center;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background: transparent;
-	}
-
-	.carousel-slide img {
-		width: 100%;
-		height: auto;
-		max-height: 70vh;
-		object-fit: contain; /* Assure que l'image n'est pas rognée */
-		border-radius: 0; /* Annule l'arrondi pour éviter les doubles bordures */
-		border: none;
-		box-shadow: none;
-	}
+    .carousel-image {
+        width: 100%;
+        height: auto;
+        max-height: 70vh;
+        object-fit: contain;
+        background: transparent;
+    }
 </style>

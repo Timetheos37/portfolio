@@ -1,5 +1,6 @@
-test
 # Portfolio Personnel | Personal Portfolio 🚀
+
+Visitez le site : _url incomming_
 
 Bienvenue sur le code source de mon portfolio ! Ce site bilingue (Français/Anglais) sert de vitrine pour mon parcours et mes projets en ingénierie informatique (Réseaux et systèmes, systèmes embarqués, etc.).
 

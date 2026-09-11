@@ -2,12 +2,21 @@
 import Icon from './Icon.astro';
 import type { iconPaths } from './IconPaths';
 import ThemeToggle from './ThemeToggle.astro';
+import LanguageSelect from './LanguageSelect.astro';
 
-/** Main menu items */
-const textLinks: { label: string; href: string }[] = [
-	{ label: 'Home', href: '/' },
-	{ label: 'Work', href: '/work/' },
-	{ label: 'About', href: '/about/' },
+// 1. Détection de la langue actuelle
+const pathname = Astro.url.pathname;
+const isEn = pathname.startsWith('/en');
+
+// 2. Les liens s'adaptent selon la langue (Textes et URLs !)
+const textLinks = isEn ? [
+	{ label: 'Home', href: '/en/' },
+	{ label: 'Work', href: '/en/work/' },
+	{ label: 'About', href: '/en/about/' },
+] : [
+	{ label: 'Accueil', href: '/' },
+	{ label: 'Projets', href: '/work/' },
+	{ label: 'À propos', href: '/about/' },
 ];
 
 /** Icon links to social media — edit these with links to your profiles! */
@@ -18,10 +27,12 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths }[]
 
 /** Test if a link is pointing to the current page. */
 const isCurrentPage = (href: string) => {
-	let pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
-	if (pathname.at(0) !== '/') pathname = '/' + pathname;
-	if (pathname.at(-1) !== '/') pathname += '/';
-	return pathname === href || (href !== '/' && pathname.startsWith(href));
+	let currentPath = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
+	if (currentPath.at(0) !== '/') currentPath = '/' + currentPath;
+	if (currentPath.at(-1) !== '/') currentPath += '/';
+	
+	// J'ai ajouté "href !== '/en/'" pour que le bouton Home(EN) ne reste pas surligné partout
+	return currentPath === href || (href !== '/' && href !== '/en/' && currentPath.startsWith(href));
 };
 ---
 
@@ -91,9 +102,10 @@ const isCurrentPage = (href: string) => {
 				}
 			</div>
 
-			<div class="theme-toggle">
+			<div class="actions">
+            	<LanguageSelect />
 				<ThemeToggle />
-			</div>
+         	</div>
 		</div>
 	</div>
 </nav>
@@ -254,11 +266,11 @@ const isCurrentPage = (href: string) => {
 		color: var(--accent-text-over);
 	}
 
-	.theme-toggle {
+	.actions {
 		display: flex;
 		align-items: center;
-		height: calc(var(--icon-size) + 2 * var(--icon-padding));
-	}
+		gap: 1rem; /* Espacement à droite */
+ 	}
 
 	@media (min-width: 50em) {
 		nav {

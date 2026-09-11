@@ -1,0 +1,61 @@
+---
+// src/components/LanguageSelect.astro
+
+// On vérifie si on est sur une page en anglais en regardant l'URL
+const pathname = Astro.url.pathname;
+const isEn = pathname.startsWith('/en');
+
+// Logique simple pour basculer d'une langue à l'autre en gardant le chemin
+const frUrl = isEn ? pathname.replace(/^\/en/, '') || '/' : pathname;
+const enUrl = isEn ? pathname : `/en${pathname === '/' ? '' : pathname}`;
+---
+
+<div class="language-select">
+    <a href={frUrl} class={`lang-link ${!isEn ? 'active' : ''}`}>FR</a>
+    <span class="separator">|</span>
+    <a href={enUrl} class={`lang-link ${isEn ? 'active' : ''}`}>EN</a>
+</div>
+
+<style>
+    .language-select {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 999rem;
+        font-family: var(--font-brand);
+        font-size: var(--text-sm);
+        font-weight: 600;
+    }
+
+    /* La bordure subtile du template */
+    .language-select::before {
+        position: absolute;
+        inset: -1px;
+        content: '';
+        border-radius: 999rem;
+        z-index: -1;
+    }
+
+    .lang-link {
+        text-decoration: none;
+        padding: 0.25rem 0.5rem;
+        border-radius: 999rem;
+    }
+
+    .lang-link:hover {
+        color: var(--gray-100);
+        background-color: var(--accent-subtle-overlay);
+    }
+
+    .lang-link.active {
+        color: var(--accent-text-over);
+        background-color: var(--accent-regular);
+    }
+
+    .separator {
+        color: var(--gray-800);
+        user-select: none;
+    }
+</style>

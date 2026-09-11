@@ -9,7 +9,7 @@ gallery:
     alt: vue température dans le dashboard
  
 description: |
-  Nous avons créer une mini station météo communiquant avec le protocole radio LoRa (Long Range).
+  Dans le cadre d'un travail de laboratoire, nous avons créer (à deux) une mini station météo communiquant avec le protocole radio LoRa (Long Range).
 tags:
   - Embarqué
   - Développement
@@ -34,6 +34,4 @@ _LoRaWAN_ est la technologie utilisée pour faire passer la communication des sy
 #### Approche de développement
 
 Le language de code _C++_ permet une approche orientée objet du programme. Chaque composant éléctronique est alors représenté par une classe _C++_ qui est ensuite insenciée dans le programme principale. 
-Chacun de ces composant doit travailler simultanéement, c'est pourquoi nous avons utiliser le système d'exploitation _FreeRTOS_ qui nous a permis d'associer chaque action des composant à une tâche. Une fois le système en marche, _FreeRTOS_ s'occupe lui même d'agencer les tâches pour qu'elle fonctionnent en parallèle. 
-
-Ce projet à été réalisé en binome avec l'aide du reste de la classe et du professeur.
+Chacun de ces composant doit travailler simultanéement, c'est pourquoi nous avons utiliser le système d'exploitation _FreeRTOS_ qui nous a permis d'associer chaque action des composant à une tâche. Une fois le système en marche, _FreeRTOS_ s'occupe lui même d'agencer les tâches pour qu'elle fonctionnent en parallèle.

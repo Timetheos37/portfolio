@@ -9,7 +9,7 @@ gallery:
     alt: Vue architechture reseau greensoft
 
 description: |
-  Projet de semestre : Conception architechture réseau complète selon le cahier des charges d'une entreprise fictive GreenSoft.
+  Dans le cadre du projet du 4e semestre, nous avons conçus (à quatre) une architechture réseau complète selon le cahier des charges d'une entreprise fictive, GreenSoft.
 tags:
   - Réseau
   - Arichitecture

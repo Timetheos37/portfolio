@@ -26,7 +26,7 @@ Here is a non-exhaustive list to illustrate this phase with some examples:
 | Needs | Solution(s) |
 | --- | --- |
 | Connection of the Dublin site (_IPv6 Only_) to the Internet (_Dual Stack_) | NAT64 + DNS64 protocols |
-| Private virtual link between Dublin and the main headquarters in Fribourg | VPN protocols: GRE or GMAT |
+| Private virtual link between Dublin and the main headquarters in Fribourg | VPN protocols: GRE or IPsec |
 | Private tunnel connection from the Lausanne site to the main headquarters in Fribourg | VXLAN or L2TP protocols |
 | Stability and security | Additional equipment (_Firewall_ + _Router_) with VRRP or HSRP protocols |
 
